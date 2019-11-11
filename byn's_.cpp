@@ -10,7 +10,7 @@ using namespace std;
 
 int main(int argc, int argv[]) {
 
-	list <User> UL; //User List
+	list <User> UL; //User List 
 	list <Seat> SL; //Seat List
 
 

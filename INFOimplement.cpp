@@ -4,16 +4,15 @@
 #include "UserINFO.h"
 #include "SeatINFO.h"
 using namespace std;
-//1. Seat function implements 2. User function implements
-
-Seat::Seat() {
-	this->seatNum = 0;
+//-----------------SEAT CONSTRUCTOR-------------------
+Seat::Seat() {		
+	this->seatNum = 0;			
 	this->price = 10000;
 	this->resNum = 0;
 	memcpy(this->booker, 0x00, MAX_Booker_LEN+1);
 }
 
-Seat::Seat(int snum, int pprice, int rnum, std::string bbooker = NULL) //resNum=예약번호, booker=예약자
+Seat::Seat(int snum, int pprice, int rnum, std::string bbooker = NULL) 
 {
 	seatNum = snum;
 	price = pprice;
