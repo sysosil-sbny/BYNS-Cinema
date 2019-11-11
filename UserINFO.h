@@ -8,17 +8,17 @@
 class User {
 public:
 	User();
-	User(std::string name, int resNum); //resNum=예약번호, name= 이름
+	User(std::string name, int resNum); //resNum=reservation number, name= name of the user
 
-	void setName(std::string name);
-	void setResNum(int resNum);
+	void setName(std::string name);    //setter for name 
+	void setResNum(int resNum);        //setter for resNum 
 
-	std::string getName(void);
-	int getResNum(void);
+	std::string getName(void);        //getter for name
+	int getResNum(void);             //setter for resNum
 
 private:
-	char name[MAX_Booker_LEN + 1];
-	int resNum;
+	char name[MAX_Booker_LEN + 1];   //name= name of the user
+	int resNum;                      //resNum=reservation number
 };
 
 
