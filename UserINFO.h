@@ -11,14 +11,17 @@ public:
 	User(std::string name, int resNum); //resNum=reservation number, name= name of the user
 
 	void setName(std::string name);    //setter for name 
-	void setResNum(int resNum);        //setter for resNum 
+	void setResNum(int resNum);        //setter for resNum
+	void setSeatNum(int snum);            //setter for Seat number 
 
 	std::string getName(void);        //getter for name
-	int getResNum(void);             //setter for resNum
+	int getResNum(void);             //getter for resNum
+	int getSeatNum();				//getter for Seat number 
 
 private:
 	char name[MAX_Booker_LEN + 1];   //name= name of the user
 	int resNum;                      //resNum=reservation number
+	int seatNum;					 //seatNum=seat Number
 };
 
 

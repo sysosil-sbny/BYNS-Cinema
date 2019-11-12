@@ -43,7 +43,7 @@ string  Seat::getBooker() { return this->booker; }
 
 //================================================================================
 
-//----------------USER SETTER---------------
+//---------------USER CONSTRUCTOR----------------------
 User::User() {
 	memcpy(this->name, 0x00, MAX_Booker_LEN + 1); 
 	this->resNum = 0;
@@ -53,12 +53,20 @@ User::User(std::string nname, int rNum)
 	resNum = rNum;
 	memcpy(this->name, nname.c_str(), MAX_Booker_LEN);
 }
+
+
+//----------------USER SETTER---------------
 void User::setName(std::string nname) {
 	memcpy(this->name, nname.c_str(), MAX_Booker_LEN);
 }
 void User::setResNum(int rNum) {
 	this->resNum = rNum;
 }
+void User:: setSeatNum(int snum)          
+{
+	this->seatNum = snum;
+}
 //------------USER GETTER----------------
 string User::getName(void) { return this->name; }
 int User::getResNum(void) { return this->resNum; }
+int User::getSeatNum() { return this->seatNum; }
