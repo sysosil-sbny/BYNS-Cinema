@@ -7,24 +7,70 @@
 #include <sys/stat.h>
 
 using namespace std;
+//#include "UserINFO.h"
 
-void write_usr(string name, int resnum, int seatnum) { //°íÀ¯¹øÈ£ ¹ŞÀº ÈÄ »ç¿ëÀÚ ÆÄÀÏ¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö
-	User usr(name, resnum, seatnum); // À¯Àú ±¸Á¶Ã¼ »ı¼º
-	string filepath = "./UserList.dat"; // »ç¿ëÀÚ ÆÄÀÏ
-	int fd = open(filepath.c_str(), O_CREAT | O_APPEND | O_WRONLY, 0644); //¿­°í
+//#include "SeatINFO.h"
+
+#include <fcntl.h>
+
+#include <iostream>
+
+#include <list>
+
+#include <string>
+
+#include <sys/stat.h>
+
+using namespace std;
+
+
+int main(int argc, int argv[]) {
+	cout << "______ __   __ _   _  _____          _____  _" << endl;
+	cout << "| ___ || | / /| | | |/  ___|        /  __ |(_)" << endl;
+	cout << "| |_/ / | V / | |_| || `--.  ______ | /  |/ _" << endl;
+	cout << "| ___ |  | /  | ._` | `--. ||______|| |    | || '__  / _  | '_ ` _   / _` |" << endl;
+	cout << "| |_/ / _| |  | | | |/___/ /        | |__ /| || | | |||___/|| | | | || (_| |" << endl;
+	cout << "|____ / |_ /  |_|  _/_____/         |____/ |_||_| |_||____|||_| |_| ||_ ||__| " << endl;
+
+
+
+	int choice = 0;
+
+
+
+	cout << "-----------MEMU-------------" << endl;
+	cout << "1. ì˜ˆë§¤í•˜ê¸°" << endl;
+	cout << "2. ì˜ˆë§¤í™•ì¸" << endl;
+
+	cin >> choice;
+
+	switch (choice)
+	{
+	case 1: Booking();
+	case 2: Bookingcheck();
+	default:
+		break;
+	}
+
+			return 0;
+}
+void write_usr(string name, int resnum, int seatnum) { //ê³ ìœ ë²ˆí˜¸ ë°›ì€ í›„ ì‚¬ìš©ì íŒŒì¼ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜
+	User usr(name, resnum, seatnum); // ìœ ì € êµ¬ì¡°ì²´ ìƒì„±
+	string filepath = "./UserList.dat"; // ì‚¬ìš©ì íŒŒì¼
+	int fd = open(filepath.c_str(), O_CREAT | O_APPEND | O_WRONLY, 0644); //ì—´ê³ 
 	if (fd == -1) {
 		perror("open() error");
 		//return 1;
 	}
-	if (write(fd, &usr, sizeof(User)) == -1) { // ¾¸
+	if (write(fd, &usr, sizeof(User)) == -1) { // ì”€
 		perror("write() error");
 		// return 2;
 	}
 
-	close(fd);//´İÀ½
+	close(fd);//ë‹«ìŒ
 }
 
-void read_usr(int resNum) { //¿¹¸Å È®ÀÎ ÇÒ ¶§ ÀÔ·ÂµÈ °íÀ¯¹øÈ£°¡ »ç¿ëÀÚ ÆÄÀÏ¿¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+void read_usr(int resNum) { //ì˜ˆë§¤ í™•ì¸ í•  ë•Œ ì…ë ¥ëœ ê³ ìœ ë²ˆí˜¸ê°€ ì‚¬ìš©ì íŒŒì¼ì— ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜
 	string filepath = "./UserList.dat";
 	int fd = open(filepath.c_str(), O_RDONLY);
 	if (fd == -1) {
@@ -35,7 +81,7 @@ void read_usr(int resNum) { //¿¹¸Å È®ÀÎ ÇÒ ¶§ ÀÔ·ÂµÈ °íÀ¯¹øÈ£°¡ »ç¿ëÀÚ ÆÄÀÏ¿¡ ÀÖ
 	User usr = User();
 	list<User> usrList;
 	do {
-		rSize = read(fd, &sur, sizeof(User)); // À¯Àú ±¸Á¶Ã¼ ´ÜÀ§·Î ÀĞ¾î¼­
+		rSize = read(fd, &sur, sizeof(User)); // ìœ ì € êµ¬ì¡°ì²´ ë‹¨ìœ„ë¡œ ì½ì–´ì„œ
 
 		if (rSize == -1) {
 			perror("read() error!");
@@ -46,18 +92,18 @@ void read_usr(int resNum) { //¿¹¸Å È®ÀÎ ÇÒ ¶§ ÀÔ·ÂµÈ °íÀ¯¹øÈ£°¡ »ç¿ëÀÚ ÆÄÀÏ¿¡ ÀÖ
 			/// break;
 		}
 
-		usrList.push_back(usr);// À¯Àú¸®½ºÆ®¿¡ ³Ö´Â´Ù.
+		usrList.push_back(usr);// ìœ ì €ë¦¬ìŠ¤íŠ¸ì— ë„£ëŠ”ë‹¤.
 	} while (rSize > 0);
 
 	close(fd);
 
 	list<User>::iterator iter;
 
-	for (iter = usrList.begin(); iter != usrList.end(); ++iter) { // À¯Àú¸®½ºÆ® ¼­Ä¡ µ¿¾È °íÀ¯¹øÈ£ Ã£À¸¸é 
+	for (iter = usrList.begin(); iter != usrList.end(); ++iter) { // ìœ ì €ë¦¬ìŠ¤íŠ¸ ì„œì¹˜ ë™ì•ˆ ê³ ìœ ë²ˆí˜¸ ì°¾ìœ¼ë©´ 
 		if (iter->getResNum == resNum)
-			cout << getSeatNum << " ÁÂ¼® ¿¹¸Å µÇ¾îÀÖ½À´Ï´Ù." << endl; // Ãâ·Â
+			cout << getSeatNum << " ì¢Œì„ ì˜ˆë§¤ ë˜ì–´ìˆìŠµë‹ˆë‹¤." << endl; // ì¶œë ¥
 		else
-			cout << "¿¹¸ÅÇÑ ÁÂ¼®ÀÌ ¾ø½À´Ï´Ù." << endl; // ¸øÃ£À¸¸é Ãâ·Â
+			cout << "ì˜ˆë§¤í•œ ì¢Œì„ì´ ì—†ìŠµë‹ˆë‹¤." << endl; // ëª»ì°¾ìœ¼ë©´ ì¶œë ¥
 	}
 }
 
