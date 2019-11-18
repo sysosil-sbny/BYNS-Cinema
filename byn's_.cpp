@@ -7,36 +7,41 @@
 #include <sys/stat.h>
 
 using namespace std;
-//#include "UserINFO.h"
 
-//#include "SeatINFO.h"
 
-#include <fcntl.h>
+	
+//예매확인으로 넘어갈 때의 함수 
+void Bookingcheck(){
+//(1) 고유번호 입력하기
+cout << "자신의 예매번호를 입력하세요 : ";
 
-#include <iostream>
+//cin >> 고유번호;
 
-#include <list>
+//(2) 파일 open
+string filepath = "./UserList.dat"; // 사용자 파일
+int fd = open(filepath.c_str(), O_CREAT | O_APPEND | O_WRONLY, 0644); //열고
+if (fd == -1) {
+	perror("open() error");
+}
+//(3) 정보 검색..
+	
+//(4)정보 출력
 
-#include <string>
+cout << "본인의 예매번호"<<endl;
+cout << "예매한 좌석 정보"<<endl;
 
-#include <sys/stat.h>
 
-using namespace std;
-
+	
 
 int main(int argc, int argv[]) {
 	cout << "______ __   __ _   _  _____          _____  _" << endl;
 	cout << "| ___ || | / /| | | |/  ___|        /  __ |(_)" << endl;
-	cout << "| |_/ / | V / | |_| || `--.  ______ | /  |/ _" << endl;
-	cout << "| ___ |  | /  | ._` | `--. ||______|| |    | || '__  / _  | '_ ` _   / _` |" << endl;
-	cout << "| |_/ / _| |  | | | |/___/ /        | |__ /| || | | |||___/|| | | | || (_| |" << endl;
-	cout << "|____ / |_ /  |_|  _/_____/         |____/ |_||_| |_||____|||_| |_| ||_ ||__| " << endl;
-
-
+	cout << "| |_/ / | V / | |_| || `--.  ______ | /  |/ _  _ ___   ____  ________  _____     "<< endl;
+	cout << "| ___ |  | /  | ._` | `--. ||______|| |    | || '__ | / __ ||` _   _  | |_` |" << endl;
+	cout << "| |_/ / _| |  | | | |/___/ /        | |__ /| || | | |||___/ | | | | | | (_| |" << endl;
+	cout << "|____ / |_ /  |_| |_/_____/         |____/ |_||_| |_||____| | |_| |_| |_| |_| " << endl;
 
 	int choice = 0;
-
-
 
 	cout << "-----------MEMU-------------" << endl;
 	cout << "1. 예매하기" << endl;
@@ -52,8 +57,10 @@ int main(int argc, int argv[]) {
 		break;
 	}
 
-			return 0;
+	return 0;
 }
+	
+	
 void write_usr(string name, int resnum, int seatnum) { //고유번호 받은 후 사용자 파일에 저장하는 함수
 	User usr(name, resnum, seatnum); // 유저 구조체 생성
 	string filepath = "./UserList.dat"; // 사용자 파일
