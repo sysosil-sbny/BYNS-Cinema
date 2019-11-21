@@ -29,6 +29,11 @@ Node *head = NULL;
 Node *tail = NULL;
 Node *cur = NULL;
 
+typedef struct Node {
+    Seat data; // 데이터 저장 공간
+    struct Node *next; // 다음 노드의 연결을 위한 포인터
+}Node;
+
 void setting()
 {
     list<Node> SL;
