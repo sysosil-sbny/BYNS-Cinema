@@ -13,22 +13,25 @@
  */
 
 #include "SeatINFO.h"
+#include "UserINFO.h"
 #include <iostream>
 #include <list>
 
 using namespace std;
 
-typedef struct Node {
-    Seat data; // 데이터 저장 공간
-    struct Node *next; // 다음 노드의 연결을 위한 포인터
-}Node;
+void setting();
+void seat_print();
+void Booking();
+void write_usr(string name, int resnum, int seatnum); //고유번호 받은 후 사용자 파일에 저장하는 함수
+void read_usr(int resNum); //예매 확인 할 때 입력된 고유번호가 사용자 파일에 있는지 확인하는 함수
 
 Node *head = NULL;
 Node *tail = NULL;
 Node *cur = NULL;
 
-void insert()
+void setting()
 {
+    list<Node> SL;
     Node *newNode = NULL;
     
     for(int i=1; i<65; i++)
@@ -45,6 +48,7 @@ void insert()
         else // 첫 번째 노드가 아니라면
             tail->next = newNode;
         tail = newNode; // 노드의 끝을 tail이 가리키게 함
+        SL.push_back(newNode);
     }
 }
 
@@ -74,9 +78,9 @@ void seat_print()
     cout << endl;
 }
 
-void Booking(int argc, const char * argv[]) {
-    insert();
+void Booking() {
     Node *cur = head;
+    //setting();
     
     while(true)
     {
