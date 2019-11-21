@@ -47,11 +47,14 @@ string  Seat::getBooker() { return this->booker; }
 User::User() {
 	memcpy(this->name, 0x00, MAX_Booker_LEN + 1); 
 	this->resNum = 0;
+	this->seatNum =0;
 }
-User::User(std::string nname, int rNum)
+User::User(std::string nname, int rNum, int seatNum)
 {
 	resNum = rNum;
+	seatNum=seatNum;
 	memcpy(this->name, nname.c_str(), MAX_Booker_LEN);
+	
 }
 
 
