@@ -12,7 +12,7 @@ Seat::Seat() {
 	memcpy(this->booker, 0x00, MAX_Booker_LEN+1);
 }
 
-Seat::Seat(int snum, int pprice, int rnum, std::string bbooker = NULL) 
+Seat::Seat(int snum, int pprice, int rnum, std::string bbooker) 
 {
 	seatNum = snum;
 	price = pprice;

@@ -7,7 +7,7 @@
 class Seat {
 public:
 	Seat();                                                         //default constructor of the class Seat
-	Seat(int snum, int pprice, int rnum, std::string bbooker=NULL); //constructor when parameter exist
+	Seat(int snum, int pprice, int rnum, std::string bbooker); //constructor when parameter exist
 													      	//snum=seat Number, pprice=price, rnum=reservation number, bbooker= booker
 	
 	void setSeatNum(int snum);            //setter for Seat number 
