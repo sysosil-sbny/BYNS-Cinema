@@ -8,7 +8,7 @@
 class User {
 public:
 	User();
-	User(std::string name, int resNum); //resNum=reservation number, name= name of the user
+	User(std::string name, int resNum, int seatNum); //resNum=reservation number, name= name of the user
 
 	void setName(std::string name);    //setter for name 
 	void setResNum(int resNum);        //setter for resNum
