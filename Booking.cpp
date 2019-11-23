@@ -138,7 +138,28 @@ void Booking() {
 			cin >> answer;
 
 			if (answer == 'y')
-				cout << "예매되었습니다.\n";
+
+				int choice;
+
+				cout << "결제할 방법을 선택하세요" << endl;
+				cout << "1. 카드  ";
+				cout << "2. 무통장 입금  ";
+				cout << "3. 휴대폰 결제  ";
+				
+				cin >> choice;
+
+				switch (choice)
+				{
+				case 1: cout << "예매되었습니다.\n";
+				case 2: cout << "예매되었습니다.\n";
+				case 3: cout << "예매되었습니다.\n";
+			
+				}
+
+
+			
+			
+			
 			else if (answer == 'n')
 				cout << "취소되었습니다.\n";
 		}
