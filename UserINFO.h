@@ -1,14 +1,12 @@
 #ifndef __USERINFO_H__
 #define __USERINFO_H__
-
-
 #include <string>
 #define MAX_Booker_LEN 32
 
 class User {
 public:
 	User();
-	User(std::string name, string resNum,int seatNum); //resNum=reservation number, name= name of the user
+	User(std::string name, std::string resNum,int seatNum); //resNum=reservation number, name= name of the user
 
 	void setName(std::string name);    //setter for name 
 	void setResNum(string resNum);        //setter for resNum

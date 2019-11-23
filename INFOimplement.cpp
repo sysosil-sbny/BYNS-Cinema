@@ -8,11 +8,11 @@ using namespace std;
 Seat::Seat() {		
 	this->seatNum = 0;			
 	this->price = 10000;
-	this->resNum = 0;
+	this->resNum = "";
 	memcpy(this->booker, 0x00, MAX_Booker_LEN+1);
 }
 
-Seat::Seat(int snum, int pprice, int rnum, std::string bbooker) 
+Seat::Seat(int snum, int pprice, std::string rnum, std::string bbooker) 
 {
 	seatNum = snum;
 	price = pprice;
@@ -28,7 +28,7 @@ void Seat::setSeatNum(int snum) {
 void Seat::setPrice(int p) {
 	this->price = p;
 }
-void Seat::setResNum(int resNum) {
+void Seat::setResNum(std::string resNum) {
 	this->resNum = resNum;
 }
 void Seat:: setBooker(std::string booker) {
@@ -38,7 +38,7 @@ void Seat:: setBooker(std::string booker) {
 //------------SEAT GETTER-------------------
 int  Seat::getSeatNum() { return this->seatNum; }
 int Seat::getPrice() { return this->price; }
-int  Seat::getResNum() { return this->resNum; }
+string  Seat::getResNum() { return this->resNum; }
 string  Seat::getBooker() { return this->booker; }
 
 //================================================================================
@@ -46,11 +46,11 @@ string  Seat::getBooker() { return this->booker; }
 //---------------USER CONSTRUCTOR----------------------
 User::User() {
 	memcpy(this->name, 0x00, MAX_Booker_LEN + 1); 
-	this->resNum = 0;
+	this->resNum = "";
 	this->seatNum=0;
 }
 
-User::User(std::string nname, int rNum, int seatNum)
+User::User(std::string nname, string rNum, int seatNum)
 
 {
 
@@ -67,7 +67,7 @@ User::User(std::string nname, int rNum, int seatNum)
 void User::setName(std::string nname) {
 	memcpy(this->name, nname.c_str(), MAX_Booker_LEN);
 }
-void User::setResNum(int rNum) {
+void User::setResNum(string rNum) {
 	this->resNum = rNum;
 }
 void User:: setSeatNum(int snum)          
@@ -76,5 +76,5 @@ void User:: setSeatNum(int snum)
 }
 //------------USER GETTER----------------
 string User::getName(void) { return this->name; }
-int User::getResNum(void) { return this->resNum; }
+string User::getResNum(void) { return this->resNum; }
 int User::getSeatNum() { return this->seatNum; }

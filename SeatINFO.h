@@ -12,13 +12,13 @@ public:
 	
 	void setSeatNum(int snum);            //setter for Seat number 
 	void setPrice(int p);				  //setter for Price  
-	void setResNum(string resNum);			  //setter for reservation number 
+	void setResNum(std::string resNum);			  //setter for reservation number 
 	void setBooker(std::string booker);   //setter for booker 
 	
 
 	int getSeatNum(); //getter for Seat number 
 	int getPrice();  //setter for Price
-	string getResNum();
+	std::string getResNum();
 	std::string getBooker();
 	
 private:
