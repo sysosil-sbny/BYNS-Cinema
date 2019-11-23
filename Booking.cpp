@@ -18,54 +18,33 @@
 
 using namespace std;
 
-void setting();
-void seat_print();
-void Booking();
+list<Seat> setting();
+void seat_print(list<Seat> SL);
+void Booking(list<Seat> SL);
 void write_usr(string name, int resnum, int seatnum); //고유번호 받은 후 사용자 파일에 저장하는 함수
 void read_usr(int resNum); //예매 확인 할 때 입력된 고유번호가 사용자 파일에 있는지 확인하는 함수
 
-/*Node *head = NULL;
-Node *tail = NULL;
-Node *cur = NULL;
-typedef struct Node {
-	Seat data; // 데이터 저장 공간
-	struct Node *next; // 다음 노드의 연결을 위한 포인터
-}Node;*/
+list<Seat> setting()			// 자리정보 설정
+{	
+	list<Seat> SL;
 
-void setting(list<Seat> SL)
-{
-	for (int i = 1; i < 65; i++)
+	for (int i = 0; i < 64; i++)
 	{
-		//newNode = new Node(); // 노드의 생성
-
-		int seatNum = i;
-		int Price = 10000;
-		int resNum = 0;
-		/*newNode->setSeatNum(i); // 노드에 데이터 저장
-		newNode->setPrice(10000); // 노드에 데이터 저장
-		newNode->setResNum(0); // 노드에 데이터 저장*/
-
-		Seat newNode(seatNum, Price, resNum, NULL);
-
-		/*newNode->next = NULL; // 노드의 next변수를 초기화
-		if (head == NULL) // 추가 된 노드가 첫 번째 노드일 경우
-			head = newNode; // 첫 번째 노드를 head가 가리키게 함
-		else // 첫 번째 노드가 아니라면
-			tail->next = newNode;
-		tail = newNode; // 노드의 끝을 tail이 가리키게 함*/
+		Seat newNode(i, 10000, "", "", 0);
 		SL.push_back(newNode);
 	}
+
+	return SL;
 }
 
-void seat_print(list<Seat> SL)
+void seat_print(list<Seat> SL)		// 좌석상태에 따라 좌석도 출력
 {
-	//Node *cur = head;
-
 	list<Seat>::iterator iter;
 	iter = SL.begin();
+
 	cout << "\n  ======SCREEN======\n";
 	cout << "  a b c d\t e f g h\n";
-	for (int i = 0; i < 8; i++)
+	for (int i = 1; i < 9; i++)
 	{
 		cout << i;
 
@@ -73,7 +52,7 @@ void seat_print(list<Seat> SL)
 		{
 			if (j == 5)
 				cout << "\t";
-			if (iter->getResNum() == 0)
+			if ((*iter).getState() == 0)		// 좌석상태 가져오기
 				cout << " O";
 			else
 				cout << " X";
@@ -86,14 +65,11 @@ void seat_print(list<Seat> SL)
 	cout << endl;
 }
 
-void Booking() {
-	//Node *cur = head;
-	//setting();
-
-	list<Seat> SL;
-	list<Seat>::iterator iter;
+// 예약 과정
+void Booking(list<Seat> SL) 
+{
+	list<Seat>::iterator iter;		// 좌석정보 가져올 반복자
 	iter = SL.begin();
-	setting(SL);
 
 	while (true)
 	{
@@ -114,20 +90,21 @@ void Booking() {
 
 		for (int i = 0; i < many; i++)
 		{
-			cin >> seat;
-			(*iter).setSeatNum((seat[0] - 'a') * 8 + seat[1] - '0');
-			if ((*iter).getResNum() == 1)
+			cin >> seat;		// 문자열로 좌석번호 받아 정수로 변경
+			int num = (seat[1] - '1') * 8 + seat[0] - 'a';
+			
+			for(iter = SL.begin();((*iter).getSeatNum())!=num; iter++);
+				
+			if ((*iter).getState() == 0)		// 이미 예약된 경우
 			{
 				cout << "이미 예약된 좌석입니다.\n";
 				break;
 			}
-			else
+			else				
 			{
-				(*iter).setResNum(1);
+				(*iter).setState(0);
 				count++;
 			}
-
-			iter++;
 		}
 
 		char answer = '\0';         // 결제 대답
@@ -138,8 +115,8 @@ void Booking() {
 			cin >> answer;
 
 			if (answer == 'y')
-
-				int choice;
+			{
+				int choice=0;
 
 				cout << "결제할 방법을 선택하세요" << endl;
 				cout << "1. 카드  ";
@@ -150,15 +127,12 @@ void Booking() {
 
 				switch (choice)
 				{
-				case 1: cout << "예매되었습니다.\n";
-				case 2: cout << "예매되었습니다.\n";
-				case 3: cout << "예매되었습니다.\n";
-			
+				case 1: 
+				case 2:
+				case 3: 
+					cout << "예매되었습니다.\n";
 				}
-
-
-			
-			
+			}
 			
 			else if (answer == 'n')
 				cout << "취소되었습니다.\n";
