@@ -9,11 +9,11 @@ public:
 	User(std::string name, std::string resNum,int seatNum); //resNum=reservation number, name= name of the user
 
 	void setName(std::string name);    //setter for name 
-	void setResNum(string resNum);        //setter for resNum
+	void setResNum(std::string resNum);        //setter for resNum
 	void setSeatNum(int snum);            //setter for Seat number 
 
 	std::string getName(void);        //getter for name
-	string getResNum(void);             //getter for resNum
+	std::string getResNum(void);             //getter for resNum
 	int getSeatNum();				//getter for Seat number 
 
 private:

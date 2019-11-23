@@ -17,6 +17,14 @@ Seat::Seat(int snum, int pprice, std::string rnum, std::string bbooker)
 	seatNum = snum;
 	price = pprice;
 	resNum = rnum;
+	this->state = 0;
+	memcpy(this->booker, bbooker.c_str(), MAX_Booker_LEN);
+}
+Seat::Seat(int snum, int pprice, string rnum, std::string bbooker, int state) {
+	seatNum = snum;
+	price = pprice;
+	resNum = rnum;
+	state = state;
 	memcpy(this->booker, bbooker.c_str(), MAX_Booker_LEN);
 }
 
@@ -28,6 +36,9 @@ void Seat::setSeatNum(int snum) {
 void Seat::setPrice(int p) {
 	this->price = p;
 }
+void Seat::setState(int s) {  //setter for State
+	this->state = 0;
+}
 void Seat::setResNum(std::string resNum) {
 	this->resNum = resNum;
 }
@@ -38,6 +49,7 @@ void Seat:: setBooker(std::string booker) {
 //------------SEAT GETTER-------------------
 int  Seat::getSeatNum() { return this->seatNum; }
 int Seat::getPrice() { return this->price; }
+int Seat::getState() { return this->state; }
 string  Seat::getResNum() { return this->resNum; }
 string  Seat::getBooker() { return this->booker; }
 
@@ -67,8 +79,8 @@ User::User(std::string nname, string rNum, int seatNum)
 void User::setName(std::string nname) {
 	memcpy(this->name, nname.c_str(), MAX_Booker_LEN);
 }
-void User::setResNum(string rNum) {
-	this->resNum = rNum;
+void User::setResNum(std::string resNum) {
+	this->resNum = resNum;
 }
 void User:: setSeatNum(int snum)          
 {
