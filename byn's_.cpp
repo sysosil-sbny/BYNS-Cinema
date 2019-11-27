@@ -6,6 +6,13 @@
 #include <string>
 #include <sys/stat.h>
 
+#define win_abc 9
+#define win_num 9
+#define find_abc 8
+#define find_num 8
+#define black_abc 5
+#define black_num 5
+
 using namespace std;
 
 //예매확인으로 넘어갈 때의 함수 
@@ -30,28 +37,21 @@ void Bookingcheck() {
 
 }
 
-
-//book.cpp 끌어옴
-typedef struct Node {
-	Seat data; // 데이터 저장 공간
-	struct Node* next; // 다음 노드의 연결을 위한 포인터
-}Node;
-
-Node* head = NULL;
-Node* tail = NULL;
-Node* cur = NULL;
+// 사용함수 선언
 void insert();
-void seat_print();
-void Booking();
+void seat_print(list<Seat> SL, int abc, int num);
+void Booking(list<Seat> SL, int abc, int num);
+list<Seat> setting(int abc, int num);
+void menu(list<Seat> SL, int abc, int num);
+void movie();
 
+// 연결리스트 목록
+list<User> UL;
+list<Seat> winter = setting(win_abc, win_num);
+list<Seat> FM = setting(find_abc, find_num);
+list<Seat> black = setting(black_abc, black_num);
 
-
-int main(int argc, int argv[]) {
-
-
-	list <User> UL; //User List 
-	list <Seat> SL; //Seat List 
-
+int main() {
 	cout << "______ __   __ _   _  _____          _____  _" << endl;
 	cout << "| ___ || | / /| | | |/  ___|        /  __ |(_)                            _____" << endl;
 	cout << "| |_/ / | V / | |_| || `--.  ______ | /  |/ _  _ ___   ____   __________  /`__  |  " << endl;
@@ -59,27 +59,65 @@ int main(int argc, int argv[]) {
 	cout << "| |_/ / _| |  | | | |/___/ /        | |__ /| || | | || |___/  | | | | | | |  _  |" << endl;
 	cout << "|____ / |_ /  |_| |_/_____/         |____/ |_||_| |_||_____|  |_| |_| |_| |_| |_| " << endl;
 
-	int choice = 0;
-
-	cout << "-----------MEMU-------------" << endl;
-	cout << "1. 예매하기" << endl;
-	cout << "2. 예매확인" << endl;
-
-	cin >> choice;
-
-	switch (choice)
+	while(1)
 	{
-	case 1: Booking();
-	case 2: Bookingcheck();
-	default:
-		break;
-	}
+		cout << "\n-----------MENU-------------" << endl;
+		cout << "1. 예매하기" << endl;
+		cout << "2. 예매확인" << endl;
+		cout << "* 끝내시려면 0을 누르세요 *\n";
 
+		int choice = 0;
+		cout << ">> ";
+		cin >> choice;
+
+		switch (choice)
+		{
+		case 0: return 0;
+		case 1: movie();
+				break;
+		case 2: Bookingcheck();
+				break;
+		default: continue;
+		}
+	}
+}
+
+void movie()
+{
+    while(1)
+    {
+        cout << "\n---------- MOVIE ----------" << endl;
+        cout << "1. 겨울왕국2" << endl;
+        cout << "2. 나를 찾아줘" << endl;
+        cout << "3. 블랙머니" << endl;
+        cout << "* 메뉴로 돌아가시려면 0번을 누르세요 *\n";
+
+        int movie = 0;
+        cout << ">> ";
+        cin >> movie;
+
+        switch (movie)
+        {
+        case 0: return;
+        case 1: Booking(winter, win_abc, win_num);
+                break;
+        case 2: Booking(FM, find_abc, find_num);
+                break;
+        case 3: Booking(black, black_abc, black_num);
+                break;
+        default: continue;
+        }
+    }
+}
+
+void name()
+{
 	//예매한 뒤에 이름 입력. 입력받고 고유함수로 저장
 	string usrname;
 	cout << "이름을 입력하세요: ";
 	cin >> usrname;
 
-
-	return 0;
+	return;
 }
+
+
