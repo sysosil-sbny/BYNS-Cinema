@@ -18,17 +18,15 @@
 
 using namespace std;
 
-list<Seat> setting();
-void seat_print(list<Seat> SL);
-void Booking(list<Seat> SL);
-void write_usr(string name, int resnum, int seatnum); //고유번호 받은 후 사용자 파일에 저장하는 함수
-void read_usr(int resNum); //예매 확인 할 때 입력된 고유번호가 사용자 파일에 있는지 확인하는 함수
+list<Seat> setting(int abc, int num);
+void seat_print(list<Seat> SL, int abc, int num);
+void Booking(list<Seat> SL, int abc, int num);
 
-list<Seat> setting()			// 자리정보 설정
+list<Seat> setting(int abc, int num)			// 자리정보 설정
 {	
 	list<Seat> SL;
 
-	for (int i = 0; i < 64; i++)
+	for (int i = 0; i < abc*num; i++)
 	{
 		Seat newNode(i, 10000, "", "", 0);
 		SL.push_back(newNode);
@@ -37,20 +35,28 @@ list<Seat> setting()			// 자리정보 설정
 	return SL;
 }
 
-void seat_print(list<Seat> SL)		// 좌석상태에 따라 좌석도 출력
+void seat_print(list<Seat> SL, int abc, int num)		// 좌석상태에 따라 좌석도 출력
 {
 	list<Seat>::iterator iter;
 	iter = SL.begin();
 
 	cout << "\n  ======SCREEN======\n";
-	cout << "  a b c d\t e f g h\n";
-	for (int i = 1; i < 9; i++)
+    for(int i=1; i<abc+1; i++)
+    {
+		char al = 'a'+i-1;
+        if(i%5==0)
+            cout << "\t";
+        cout << " " << al;
+
+    }
+    cout << endl;
+	for (int i = 1; i < num+1; i++)
 	{
 		cout << i;
 
-		for (int j = 1; j < 9; j++)
+		for (int j = 1; j < abc+1; j++)
 		{
-			if (j == 5)
+			if (j%5 == 0)
 				cout << "\t";
 			if ((*iter).getState() == 0)		// 좌석상태 가져오기
 				cout << " O";
@@ -61,19 +67,19 @@ void seat_print(list<Seat> SL)		// 좌석상태에 따라 좌석도 출력
 		}
 		cout << endl;
 	}
-
 	cout << endl;
+	return; 
 }
 
 // 예약 과정
-void Booking(list<Seat> SL) 
+void Booking(list<Seat> SL, int abc, int num)
 {
 	list<Seat>::iterator iter;		// 좌석정보 가져올 반복자
 	iter = SL.begin();
-
+    
 	while (true)
 	{
-		seat_print(SL);
+		seat_print(SL, abc, num);
 
 		int many = 0;       // 예매할 좌석 수
 		cout << "예매할 좌석 수를 입력하세요";
@@ -81,7 +87,7 @@ void Booking(list<Seat> SL)
 		cin >> many;
 
 		if (many == 0)
-			break;
+			return;
 
 		string seat = "";       // 예매할 자리
 		cout << "예매할 좌석을 입력하세요 : ";
@@ -91,14 +97,14 @@ void Booking(list<Seat> SL)
 		for (int i = 0; i < many; i++)
 		{
 			cin >> seat;		// 문자열로 좌석번호 받아 정수로 변경
-			int num = (seat[1] - '1') * 8 + seat[0] - 'a';
+			int n = (seat[1] - '1') * num + seat[0] - 'a';
 			
-			for(iter = SL.begin();((*iter).getSeatNum())!=num; iter++);
+			for(iter = SL.begin();((*iter).getSeatNum())!=n; iter++);
 				
 			if ((*iter).getState() == 0)		// 이미 예약된 경우
 			{
 				cout << "이미 예약된 좌석입니다.\n";
-				break;
+				continue;
 			}
 			else				
 			{
@@ -122,6 +128,7 @@ void Booking(list<Seat> SL)
 				cout << "1. 카드  ";
 				cout << "2. 무통장 입금  ";
 				cout << "3. 휴대폰 결제  ";
+				cout << ">> ";
 				
 				cin >> choice;
 
