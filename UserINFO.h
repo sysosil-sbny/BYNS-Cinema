@@ -2,6 +2,7 @@
 #define __USERINFO_H__
 #include <string>
 #define MAX_Booker_LEN 32
+using namespace std;
 
 class User {
 public:
