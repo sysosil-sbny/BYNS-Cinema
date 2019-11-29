@@ -65,6 +65,7 @@ void Booking(list<Seat> SL, int abc, int num) {
         cout << "예매할 좌석 수를 입력하세요";
         cout << "\n(메뉴로 돌아가고 싶으시면 0를 입력하세요)\n>> ";
         cin >> many;
+        int n;//좌석번호 받을 변수
 
         if (many == 0)
             return;
@@ -78,10 +79,9 @@ void Booking(list<Seat> SL, int abc, int num) {
 
         for (int i = 0; i < many; i++) {
             cin >> seat; // 문자열로 좌석번호 받아 정수로 변경
-            int n = (seat[1] - '1') * num + seat[0] - 'a';
+            n = (seat[1] - '1') * num + seat[0] - 'a';//위에서 선언한 변수
 
-            for (iter = SL.begin(); ((*iter).getSeatNum()) != n; iter++)
-                ;
+            for (iter = SL.begin(); ((*iter).getSeatNum()) != n; iter++);
 
             if ((*iter).getState() == 0) // 이미 예약된 경우
             {
@@ -169,6 +169,12 @@ void Booking(list<Seat> SL, int abc, int num) {
                 case 3:
                     cout << "예매되었습니다.\n";
                 }
+                string nn = name();
+					string rnum;//resnum
+					rnum = randchar();
+					cout<<nn<<" 님의 고유번호는 "<<rnum<<"입니다."<<endl;
+					write_usr(nn, rnum, n);
+					cout << "예매되었습니다.\n";
             }
 
             else if (answer == 'n')
