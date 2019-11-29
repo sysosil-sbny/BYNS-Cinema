@@ -3,6 +3,7 @@
 
 #include <string>
 #define MAX_Booker_LEN 32
+using namespace std;
 
 class Seat {
 public:
