@@ -110,14 +110,14 @@ void movie()
     }
 }
 
-void name()
+string name()
 {
 	//예매한 뒤에 이름 입력. 입력받고 고유함수로 저장
 	string usrname;
 	cout << "이름을 입력하세요: ";
 	cin >> usrname;
 
-	return;
+	return usrname;
 }
 
 

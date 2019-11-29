@@ -15,9 +15,11 @@
 #include "UserINFO.h"
 #include <iostream>
 #include <list>
-
+#include <string>
 using namespace std;
-
+string name();
+string randchar();
+void write_usr(string,string,int);
 list<Seat> setting(int abc, int num);
 void seat_print(list<Seat> SL, int abc, int num);
 void Booking(list<Seat> SL, int abc, int num);
@@ -85,6 +87,7 @@ void Booking(list<Seat> SL, int abc, int num)
 		cout << "예매할 좌석 수를 입력하세요";
 		cout << "\n(메뉴로 돌아가고 싶으시면 0를 입력하세요)\n>> ";
 		cin >> many;
+int n;//좌석번호 받을 변수
 
 		if (many == 0)
 			return;
@@ -137,6 +140,12 @@ void Booking(list<Seat> SL, int abc, int num)
 				case 1: 
 				case 2:
 				case 3: 
+					//string n="";
+					string nn = name();
+					string rnum;//resnum
+					rnum = randchar();
+					cout<<nn<<" 님의 고유번호는 "<<rnum<<"입니다."<<endl;
+					write_usr(nn, rnum, n);
 					cout << "예매되었습니다.\n";
 				}
 			}
