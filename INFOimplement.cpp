@@ -9,7 +9,7 @@ Seat::Seat() {
 	this->seatNum = 0;			
 	this->price = 10000;
 	this->resNum = "";
-	memcpy(this->booker, 0x00, MAX_Booker_LEN+1);
+	memset(this->booker, 0x00, MAX_Booker_LEN+1);
 }
 
 Seat::Seat(int snum, int pprice, std::string rnum, std::string bbooker) 
@@ -57,7 +57,7 @@ string  Seat::getBooker() { return this->booker; }
 
 //---------------USER CONSTRUCTOR----------------------
 User::User() {
-	memcpy(this->name, 0x00, MAX_Booker_LEN + 1); 
+	memset(this->name, 0x00, MAX_Booker_LEN + 1); 
 	this->resNum = "";
 	this->seatNum=0;
 }
