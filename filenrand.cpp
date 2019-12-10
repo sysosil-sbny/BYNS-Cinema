@@ -49,7 +49,7 @@ void read_usr(string resNum) {
 		}
 
 		if (rSize == 0) {
-			/// break;
+			 break;
 		}
 
 		usrList.push_back(usr);
