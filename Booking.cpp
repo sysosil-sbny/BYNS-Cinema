@@ -115,7 +115,7 @@ void Booking(list<Seat> SL, int abc, int num) {
                 cout << "1. 카드  ";
                 cout << "2. 무통장 입금  ";
                 cout << "3. 휴대폰 결제  ";
-                cout << ">> ";
+                cout << endl<<">> ";
 
                 cin >> choice;
 
@@ -127,6 +127,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 						<< "2. 하나은행\n"
 						<< "3. 국민은행\n"
 						<< "4. 신한은행\n ";
+					cout<<">>"<<endl;
 					cin >> bank;
 					switch (bank) {
 					case 1:
@@ -176,28 +177,18 @@ void Booking(list<Seat> SL, int abc, int num) {
 						<< "2. KT\n"
 						<< "3. LG\n"
 						<< "4. 알뜰폰\n ";
+					cout<<">>"<<endl;
 					cin >> phone;
 
 					switch (phone) {
 					case 1:
-						cout << "휴대폰 번호를 입력하세요 : ";
-						int pnum;
-						cin >> pnum;
-						break;
 					case 2:
-						cout << "휴대폰 번호를 입력하세요 : ";
-						int pnum;
-						cin >> pnum;
-						break;
+						
 					case 3:
-						cout << "휴대폰 번호를 입력하세요 : ";
-						int pnum;
-						cin >> pnum;
-						break;
+						
+					
 					case 4:
-						cout << "휴대폰 번호를 입력하세요 : ";
-						int pnum;
-						cin >> pnum;
+						
 						break;
 					}
 				}
