@@ -91,7 +91,7 @@ int y,x;
 	init_pair(7,COLOR_CYAN,COLOR_MAGENTA);
 
 //04
-	attron(A_BOLD);
+	//attron(A_BOLD);
 //05
 attron(COLOR_PAIR(8));
 printw("----------------------------------------------------------------------------------------------------\n");
@@ -171,15 +171,15 @@ return 0;
 void movie(){
     while(1)
     {
-        cout << "\n---------- MOVIE ----------" << endl;
-        cout << "1. 겨울왕국2" << endl;
-        cout << "2. 나를 찾아줘" << endl;
-        cout << "3. 블랙머니" << endl;
-        cout << "* 메뉴로 돌아가시려면 0번을 누르세요 *\n";
+        printw("\n---------- MOVIE ----------\n");
+        printw("1. 겨울왕국2\n");
+        printw("2. 나를 찾아줘\n");
+        printw("3. 블랙머니\n");
+        printw("* 메뉴로 돌아가시려면 0번을 누르세요 *\n");
 
         int movie = 0;
-        cout << ">> ";
-        cin >> movie;
+        printw(">> ");
+        scanw("%d",&movie);
 
         switch (movie)
         {
@@ -199,8 +199,8 @@ string name()
 {
 	//예매한 뒤에 이름 입력. 입력받고 고유함수로 저장
 	string usrname;
-	cout << "이름을 입력하세요: ";
-	cin >> usrname;
+	printw("이름을 입력하세요: ");
+	scanw("%s",&usrname);
 
 	return usrname;
 }
