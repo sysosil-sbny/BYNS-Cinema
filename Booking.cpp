@@ -75,7 +75,7 @@ void Booking(list<Seat> SL, int abc, int num) {
         string seat = ""; // 예매할 자리
         printw("예매할 좌석을 입력하세요 : ");
 
-		int n =0 ;
+        int n =0 ;
 
         int count1 = 0;
         int count2 = 0;
@@ -117,105 +117,104 @@ void Booking(list<Seat> SL, int abc, int num) {
                 int choice = 0;
 
                 printw("결제할 방법을 선택하세요\n");
-		printw("1. 카드  \n");
+        printw("1. 카드  \n");
                 printw("2. 무통장 입금  \n");
                 printw("3. 휴대폰 결제  \n");
                 printw(">> \n");
 
                 scanw("%d",&choice);
 
-				switch (choice) {
-				case 1:
-						break;
-				case 2:
-					int bank; //은행 선택, 계좌번호 랜덤생성
-					cout << "1. 우리은행\n"
-						<< "2. 하나은행\n"
-						<< "3. 국민은행\n"
-						<< "4. 신한은행\n ";
-					cout<<">>";
-					cin >> bank;
-					switch (bank) {
-					case 1:
-						cout << "우리은행 12347654333\n "
-							"예금주:(주)빈스";
-						cout << "로"
-							<< count1 * ((*iter).getPrice()) * 0.8 +
-							count2 * ((*iter).getPrice()) * 0.9 +
-							count3 * ((*iter).getPrice())
-							<< "원 입금하세요";
-						break;
+                switch (choice) {
+                case 1:
+                        break;
+                case 2:
+                    int bank; //은행 선택, 계좌번호 랜덤생성
+                    printw << "1. 우리은행\n"
+                        << "2. 하나은행\n"
+                        << "3. 국민은행\n"
+                        << "4. 신한은행\n ";
+                    printw<<">>";
+                    scanw >> bank;
+                    switch (bank) {
+                    case 1:
+                        printw << "우리은행 12347654333\n "
+                            "예금주:(주)빈스";
+                        printw << "로"
+                            << count1 * ((*iter).getPrice()) * 0.8 +
+                            count2 * ((*iter).getPrice()) * 0.9 +
+                            count3 * ((*iter).getPrice())
+                            << "원 입금하세요";
+                        break;
 
-					case 2:
-						cout << "하나은행 83271616889\n "
-							"예금주:(주)빈스";
-						cout << "로"
-							<< count1 * ((*iter).getPrice()) * 0.8 +
-							count2 * ((*iter).getPrice()) * 0.9 +
-							count3 * ((*iter).getPrice())
-							<< "원 입금하세요";
-						break;
+                    case 2:
+                        printw << "하나은행 83271616889\n "
+                            "예금주:(주)빈스";
+                        printw << "로"
+                            << count1 * ((*iter).getPrice()) * 0.8 +
+                            count2 * ((*iter).getPrice()) * 0.9 +
+                            count3 * ((*iter).getPrice())
+                            << "원 입금하세요";
+                        break;
 
-					case 3:
-						cout << "국민은행 37289193842\n "
-							"예금주:(주)빈스";
-						cout << "로"
-							<< count1 * ((*iter).getPrice()) * 0.8 +
-							count2 * ((*iter).getPrice()) * 0.9 +
-							count3 * ((*iter).getPrice())
-							<< "원 입금하세요";
-						break;
+                    case 3:
+                        printw << "국민은행 37289193842\n "
+                            "예금주:(주)빈스";
+                        printw << "로"
+                            << count1 * ((*iter).getPrice()) * 0.8 +
+                            count2 * ((*iter).getPrice()) * 0.9 +
+                            count3 * ((*iter).getPrice())
+                            << "원 입금하세요";
+                        break;
 
-					case 4:
-						cout << "신항은행 47281048018\n "
-							"예금주:(주)빈스";
-						cout << "로"
-							<< count1 * ((*iter).getPrice()) * 0.8 +
-							count2 * ((*iter).getPrice()) * 0.9 +
-							count3 * ((*iter).getPrice())
-							<< "원 입금하세요";
-						break;
-					}
-						break;
+                    case 4:
+                        printw << "신항은행 47281048018\n "
+                            "예금주:(주)빈스";
+                        printw << "로"
+                            << count1 * ((*iter).getPrice()) * 0.8 +
+                            count2 * ((*iter).getPrice()) * 0.9 +
+                            count3 * ((*iter).getPrice())
+                            << "원 입금하세요";
+                        break;
+                    }
+                        break;
 
-				case 3:
-					int phone;
-					cout << "1. SKT\n"
-						<< "2. KT\n"
-						<< "3. LG\n"
-						<< "4. 알뜰폰\n ";
-					cout<<">>";
-					cin >> phone;
+                case 3:
+                    int phone;
+                    printw << "1. SKT\n"
+                        << "2. KT\n"
+                        << "3. LG\n"
+                        << "4. 알뜰폰\n ";
+                    printw <<">>";
+                    scanw >> phone;
 
-					switch (phone) {
-					case 1:
-					case 2:
-						
-					case 3:
-						
-					
-					case 4:
-						
-						break;
-					}
-				}
-				//여기까지가 choice의 swich문
-		    cout<<endl;
-		string nn = name();
+                    switch (phone) {
+                    case 1:
+                    case 2:
+                        
+                    case 3:
+                        
+                    
+                    case 4:
+                        
+                        break;
+                    }
+                }
+                //여기까지가 choice의 swich문
+            printw << endl;
+        string nn = name();
 
-					string rnum;//resnum
+                    string rnum;//resnum
 
-					rnum = randchar();
+                    rnum = randchar();
 
-					cout<<nn<<" 님의 고유번호는 "<<rnum<<"입니다."<<endl;
+                    printw <<nn<<" 님의 고유번호는 "<<rnum<<"입니다."<<endl;
 
-					write_usr(nn, rnum, n);
-                    cout << "예매되었습니다.\n";
+                    write_usr(nn, rnum, n);
+                    printw << "예매되었습니다.\n";
                 }
             }
 
             else if (answer == 'n')
-                cout << "취소되었습니다.\n";
+                printw << "취소되었습니다.\n";
         }
     }
-
