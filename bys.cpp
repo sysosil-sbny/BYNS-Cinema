@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include <unistd.h>
 #include <sys/stat.h>
 #define MAX_LENGTH 8
 #include <ncurses.h>
@@ -25,20 +26,6 @@
 
 using namespace std;
 
-//예매확인으로 넘어갈 때의 함수 
-void Bookingcheck() {
-	//(1) 고유번호 입력하기
-	cout << "자신의 예매번호를 입력하세요 : ";
-
-	string rnum;
-
-	cin >> rnum;
-
-
-
-	read_usr(rnum);
-
-}
 
 // 사용함수 선언
 void insert();
@@ -47,6 +34,9 @@ void Booking(list<Seat> SL, int abc, int num);
 list<Seat> setting(int abc, int num);
 void menu(list<Seat> SL, int abc, int num);
 void movie();
+string randchar();
+void read_usr(string resNum);
+void write_usr(string name, string resnum, int seatnum);
 
 // 연결리스트 목록
 list<User> UL;
@@ -55,13 +45,23 @@ list<Seat> FM = setting(find_abc, find_num);
 list<Seat> black = setting(black_abc, black_num);
 
 
-
+//예매확인으로 넘어갈 때의 함수 
+void Bookingcheck() {
+    //(1) 고유번호 입력하기
+    cout << "자신의 예매번호를 입력하세요 : ";
+ 
+    string rnum;
+ 
+	cin >> rnum;
+ 
+    read_usr(rnum);
+ 
+}
 
 int main(void) {
 	//print();
 int y,x;
 	initscr();
-	noecho();
 	raw();
 //01
 	if(has_colors() ==FALSE)
@@ -167,6 +167,7 @@ return 0;
 
 	refresh();
 }
+
 void movie()
 {
     while(1)
@@ -204,6 +205,3 @@ string name()
 
 	return usrname;
 }
-
-
-

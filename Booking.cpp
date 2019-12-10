@@ -5,9 +5,12 @@
 
 using namespace std;
 
+string name();
 list<Seat> setting(int abc, int num);
 void seat_print(list<Seat> SL, int abc, int num);
 void Booking(list<Seat> SL, int abc, int num);
+void write_usr(string name, string resnum, int seatnum);
+string randchar();
 
 list<Seat> setting(int abc, int num) // 자리정보 설정
 {
@@ -72,13 +75,15 @@ void Booking(list<Seat> SL, int abc, int num) {
         string seat = ""; // 예매할 자리
         cout << "예매할 좌석을 입력하세요 : ";
 
+		int n =0 ;
+
         int count1 = 0;
         int count2 = 0;
         int count3 = 0; // 예매 성공한 수
 
         for (int i = 0; i < many; i++) {
             cin >> seat; // 문자열로 좌석번호 받아 정수로 변경
-            int n = (seat[1] - '1') * num + seat[0] - 'a';
+            n = (seat[1] - '1') * num + seat[0] - 'a';
 
             for (iter = SL.begin(); ((*iter).getSeatNum()) != n; iter++)
                 ;
