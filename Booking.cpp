@@ -121,6 +121,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 
 				switch (choice) {
 				case 1:
+						break;
 				case 2:
 					int bank; //은행 선택, 계좌번호 랜덤생성
 					cout << "1. 우리은행\n"
@@ -194,6 +195,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 					}
 				}
 				//여기까지가 choice의 swich문
+		    cout<<endl;
 		string nn = name();
 
 					string rnum;//resnum
