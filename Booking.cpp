@@ -202,7 +202,15 @@ void Booking(list<Seat> SL, int abc, int num) {
 					}
 				}
 				//여기까지가 choice의 swich문
+		string nn = name();
 
+					string rnum;//resnum
+
+					rnum = randchar();
+
+					cout<<nn<<" 님의 고유번호는 "<<rnum<<"입니다."<<endl;
+
+					write_usr(nn, rnum, n);
                     cout << "예매되었습니다.\n";
                 }
             }
