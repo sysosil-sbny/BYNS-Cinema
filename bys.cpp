@@ -17,22 +17,16 @@
 #define COLOR_MAGENTA 5
 #define COLOR_CYAN 6
 #define COLOR_WHITE 7
-#define win_abc 9
-#define win_num 9
-#define find_abc 8
-#define find_num 8
-#define black_abc 5
-#define black_num 5
 
 using namespace std;
 
 
 // 사용함수 선언
 void insert();
-void seat_print(list<Seat> SL, int abc, int num);
-void Booking(list<Seat> SL, int abc, int num);
-list<Seat> setting(int abc, int num);
-void menu(list<Seat> SL, int abc, int num);
+void seat_print(list<Seat> SL);
+void Booking(list<Seat> SL);
+list<Seat> setting();
+void menu(list<Seat> SL);
 void movie();
 string randchar();
 void read_usr(string resNum);
@@ -40,9 +34,9 @@ void write_usr(string name, string resnum, int seatnum);
 
 // 연결리스트 목록
 list<User> UL;
-list<Seat> winter = setting(win_abc, win_num);
-list<Seat> FM = setting(find_abc, find_num);
-list<Seat> black = setting(black_abc, black_num);
+list<Seat> winter = setting();
+list<Seat> FM = setting();
+list<Seat> black = setting();
 
 
 //예매확인으로 넘어갈 때의 함수 
@@ -205,11 +199,11 @@ void movie(){
         switch (movie)
         {
         case 0: return;
-        case 1: Booking(winter, win_abc, win_num);
+        case 1: Booking(winter);
                 break;
-        case 2: Booking(FM, find_abc, find_num);
+        case 2: Booking(FM);
                 break;
-        case 3: Booking(black, black_abc, black_num);
+        case 3: Booking(black);
                 break;
         default: continue;
         }
