@@ -58,13 +58,21 @@ void read_usr(string resNum) {
 	close(fd);
 
 	list<User>::iterator iter;
-
+  int count = 0;
 	for (iter = usrList.begin(); iter != usrList.end(); ++iter) {
-		if (iter->getResNum() == resNum)
-			cout << iter->getSeatNum() << " ÁÂŒ® ¿¹žÅ µÇŸîÀÖœÀŽÏŽÙ." << endl;
-		else
-			cout << "¿¹žÅÇÑ ÁÂŒ®ÀÌ ŸøœÀŽÏŽÙ." << endl;
-	}
+		 same = strcmp(iter->getResNum().c_str(), resNum.c_str());
+        if (same == 0) {
+            cout << "예매하신 좌석은 " << iter->getSeatNum() << "입니다."
+                 << iter->getResNum() << " " << iter->getName() << endl;
+            count++;
+            break;
+        }
+else {
+continue;
+}
+}
+    if (count == 0)
+        cout << "예매하신 내역이 없습니다." << endl;
 }
 
 string randchar() {
