@@ -127,7 +127,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 						<< "2. 하나은행\n"
 						<< "3. 국민은행\n"
 						<< "4. 신한은행\n ";
-					cout<<">>"<<endl;
+					cout<<">>";
 					cin >> bank;
 					switch (bank) {
 					case 1:
@@ -177,7 +177,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 						<< "2. KT\n"
 						<< "3. LG\n"
 						<< "4. 알뜰폰\n ";
-					cout<<">>"<<endl;
+					cout<<">>";
 					cin >> phone;
 
 					switch (phone) {
