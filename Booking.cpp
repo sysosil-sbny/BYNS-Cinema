@@ -6,17 +6,17 @@
 using namespace std;
 
 string name();
-list<Seat> setting(int abc, int num);
-void seat_print(list<Seat> SL, int abc, int num);
-void Booking(list<Seat> SL, int abc, int num);
+list<Seat> setting();
+void seat_print(list<Seat> SL;
+void Booking(list<Seat> SL);
 void write_usr(string name, string resnum, int seatnum);
 string randchar();
 
-list<Seat> setting(int abc, int num) // 자리정보 설정
+list<Seat> setting() // 자리정보 설정
 {
     list<Seat> SL;
 
-    for (int i = 0; i < abc * num; i++) {
+    for (int i = 0; i < 64; i++) {
         Seat newNode(i, 10000, "", "", 0);
         SL.push_back(newNode);
     }
@@ -24,23 +24,23 @@ list<Seat> setting(int abc, int num) // 자리정보 설정
     return SL;
 }
 
-void seat_print(list<Seat> SL, int abc, int num) // 좌석상태에 따라 좌석도 출력
+void seat_print(list<Seat> SL) // 좌석상태에 따라 좌석도 출력
 {
     list<Seat>::iterator iter;
     iter = SL.begin();
 
     printw("\n  ======SCREEN======\n");
-    for (int i = 1; i < abc + 1; i++) {
+    for (int i = 1; i < 9; i++) {
         char al = 'a' + i - 1;
         if (i % 5 == 0)
             printw("\t");
         printw(" %s",  al);
     }
     printw("\n");
-    for (int i = 1; i < num + 1; i++) {
+    for (int i = 1; i < 9; i++) {
         printw("%d",i);
 
-        for (int j = 1; j < abc + 1; j++) {
+        for (int j = 1; j < 9; j++) {
             if (j % 5 == 0)
                 printw("\t");
             if ((*iter).getState() == 0) // 좌석상태 가져오기
@@ -57,12 +57,12 @@ void seat_print(list<Seat> SL, int abc, int num) // 좌석상태에 따라 좌�
 }
 
 // 예약 과정
-void Booking(list<Seat> SL, int abc, int num) {
+void Booking(list<Seat> SL) {
     list<Seat>::iterator iter; // 좌석정보 가져올 반복자
     iter = SL.begin();
 
     while (true) {
-        seat_print(SL, abc, num);
+        seat_print(SL);
 
         int many = 0; // 예매할 좌석 수
         printw("예매할 좌석 수를 입력하세요");
@@ -94,9 +94,9 @@ void Booking(list<Seat> SL, int abc, int num) {
                 continue;
             } else {
                 (*iter).setState(0);
-                if (n < abc * (num / 3))
+                if (n < 16)
                     count1++;
-                else if (abc * (num / 3) <= n < abc * (num / 3) * 2)
+                else if (16 <= n < 32)
                     count2++;
                 else
                     count3++;
