@@ -20,20 +20,13 @@ void Bookingcheck() {
 	//(1) 고유번호 입력하기
 	cout << "자신의 예매번호를 입력하세요 : ";
 
-	//cin >> 고유번호;
+	string rnum;
 
-	//(2) 파일 open
-	/*string filepath = "./UserList.dat"; // 사용자 파일
-	int fd = open(filepath.c_str(), O_CREAT | O_APPEND | O_WRONLY, 0644); //열고
-	if (fd == -1) {
-		perror("open() error");
-	}*/
-	//(3) 정보 검색..
+	cin >> rnum;
 
-	//(4)정보 출력
 
-	cout << "본인의 예매번호" << endl;
-	cout << "예매한 좌석 정보" << endl;
+
+	read_usr(rnum);
 
 }
 
