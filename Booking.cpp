@@ -1,4 +1,4 @@
-﻿#include "SeatINFO.h"
+#include "SeatINFO.h"
 #include "UserINFO.h"
 #include <iostream>
 #include <list>
@@ -218,4 +218,4 @@ void Booking(list<Seat> SL, int abc, int num) {
                 cout << "취소되었습니다.\n";
         }
     }
-}
+
