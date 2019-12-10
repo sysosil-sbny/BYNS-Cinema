@@ -64,13 +64,13 @@ void Booking(list<Seat> SL) {
     while (true) {
         seat_print(SL);
 
-        int many = 0; // 예매할 좌석 수
+        /*int many = 0; // 예매할 좌석 수
         printw("예매할 좌석 수를 입력하세요");
         printw("\n(메뉴로 돌아가고 싶으시면 0를 입력하세요)\n>> ");
-        scanw("%d",&many);
+        cin >> many;
 
         if (many == 0)
-            return;
+            return;*/
 
         string seat = ""; // 예매할 자리
         printw("예매할 좌석을 입력하세요 : ");
@@ -81,8 +81,8 @@ void Booking(list<Seat> SL) {
         int count2 = 0;
         int count3 = 0; // 예매 성공한 수
 
-        for (int i = 0; i < many; i++) {
-            scanw("%s",&seat); // 문자열로 좌석번호 받아 정수로 변경
+        //for (int i = 0; i < many; i++) {
+            cin >> seat; // 문자열로 좌석번호 받아 정수로 변경
             n = (seat[1] - '1') * num + seat[0] - 'a';
 
             for (iter = SL.begin(); ((*iter).getSeatNum()) != n; iter++)
@@ -101,7 +101,7 @@ void Booking(list<Seat> SL) {
                 else
                     count3++;
             }
-        }
+        //}
 
         char answer = '\0'; // 결제 대답
 
@@ -111,7 +111,7 @@ void Booking(list<Seat> SL) {
                         count2 * ((*iter).getPrice()) * 0.9 +
                         count3 * ((*iter).getPrice())
                  );
-            scanw("%s",&answer);
+            cin >> answer;
 
             if (answer == 'y') {
                 int choice = 0;
@@ -122,7 +122,7 @@ void Booking(list<Seat> SL) {
                 printw("3. 휴대폰 결제  \n");
                 printw(">> \n");
 
-                scanw("%d",&choice);
+                cin >> choice;
 
                 switch (choice) {
                 case 1:
@@ -131,7 +131,7 @@ void Booking(list<Seat> SL) {
                     int bank; //은행 선택, 계좌번호 랜덤생성
                     printw ("1. 우리은행\n 2. 하나은행\n 3. 국민은행\n 4. 신한은행\n ");
                     printw (">>");
-                    scanw("%d", &bank);
+                    cin >> bank;
                     switch (bank) {
                     case 1:
                         printw ("우리은행 12347654333\n "
@@ -170,7 +170,7 @@ void Booking(list<Seat> SL) {
                     int phone;
                     printw("1. SKT\n 2. KT\n 3. LG\n 4. 알뜰폰\n ");
                     printw (">>");
-                    scanw ("%d", &phone);
+                    cin >> phone;
 
                     switch (phone) {
                     case 1:
