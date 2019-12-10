@@ -167,9 +167,8 @@ return 0;
 
 	refresh();
 }
-
-void movie()
-{
+}
+void movie(){
     while(1)
     {
         cout << "\n---------- MOVIE ----------" << endl;
@@ -205,3 +204,4 @@ string name()
 
 	return usrname;
 }
+
