@@ -60,7 +60,7 @@ void read_usr(string resNum) {
 	list<User>::iterator iter;
   int count = 0;
 	for (iter = usrList.begin(); iter != usrList.end(); ++iter) {
-		 same = strcmp(iter->getResNum().c_str(), resNum.c_str());
+		int  same = strcmp(iter->getResNum().c_str(), resNum.c_str());
         if (same == 0) {
             cout << "예매하신 좌석은 " << iter->getSeatNum() << "입니다."
                  << iter->getResNum() << " " << iter->getName() << endl;
