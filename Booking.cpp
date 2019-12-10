@@ -170,6 +170,7 @@ void Booking(list<Seat> SL, int abc, int num) {
 							<< "원 입금하세요";
 						break;
 					}
+						break;
 
 				case 3:
 					int phone;
