@@ -26,17 +26,10 @@
 
 using namespace std;
 
-
-
 vector<string> split(string data, char dot){
 
     vector<string> result;
-
-
-
     string one = "";
-
-
 
     for (int i = 0; i < data.size(); i++){
 
@@ -56,19 +49,10 @@ vector<string> split(string data, char dot){
 
     result.push_back(one);
 
-
-
     return result;
 
 }
-
-
-
-
-
 list<User> ul;
-
-
 
 void write_usr(string name, string resnum, int seatnum) {
 
@@ -94,8 +78,6 @@ void write_usr(string name, string resnum, int seatnum) {
 
         string all = iter->getName() + "," + iter->getResNum() + "," + to_string(iter->getSeatNum()) + "\n";
 
-
-
         if (write(fd, all.c_str(), all.size()) == -1) {
 
             perror("write() error");
@@ -110,8 +92,6 @@ void write_usr(string name, string resnum, int seatnum) {
 
 }
 
-
-
 void print_user(User test){
 
     cout << "Name \t" << test.getName() << endl;
@@ -121,8 +101,6 @@ void print_user(User test){
     cout << "Seat \t" << test.getSeatNum() << endl;
 
 }
-
-
 
 void read_usr(string resNum) {
 
@@ -144,16 +122,9 @@ void read_usr(string resNum) {
 
     vector<int> seatData;
 
-
-
     char data[BUFSIZE];
 
     int size = read(fd, data, BUFSIZE);
-
-
-
-
-
     string stringData = string(data);
 
     vector<string> cutString = split(stringData, '\n');
@@ -172,38 +143,21 @@ void read_usr(string resNum) {
 
         string numy = entry[2];
 
-
-
 	int n = atoi(numy.c_str());
 
 
 
      if (name == "") break;
 
-
-
-
-
-
-
         User usr = User(name, res, n);
-
-
 
         seatData.push_back(atoi(entry[2].c_str()));
 
-
-
         usrList.push_back(usr);
-
-
-
     }
 
 
     close(fd);
-
-
 
     cout<<"========="<<endl;
 
@@ -212,20 +166,11 @@ void read_usr(string resNum) {
 
     int idx = -1;
 
-
-
     for (auto user_data: usrList) {
-
-
 
         idx ++;
 
-
-
         same = strcmp(user_data.getResNum().c_str(), resNum.c_str());
-
-
-
         string str = "";
         
 	str.push_back(   'a' + seatData[idx]%8-(seatData[idx]/8));
@@ -258,8 +203,6 @@ string randchar() {
 
 	int i;
 
-
-
 	rand();
 
 	for (i = 0; i < MAX_LENGTH / 2; i++) {
@@ -283,5 +226,3 @@ string randchar() {
 }
 
 
-
-	
